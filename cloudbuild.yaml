@@ -4,38 +4,38 @@ steps:
   entrypoint: 'bash'
   args: [
    '-c', 
-   'docker pull gcr.io/$PROJECT_ID/<app-name>:latest || exit 0'
+   'docker pull gcr.io/$_PROJECT_ID/$_APP_NAME:latest || exit 0'
   ]
 #step 2
 - name: gcr.io/cloud-builders/docker
   args: [
    'build', 
    '-t', 
-   'gcr.io/$PROJECT_ID/<app-name>:$BRANCH_NAME_',
+   'gcr.io/$_PROJECT_ID/$_APP_NAME:$_BRANCH_NAME',
    '-t', 
-   'gcr.io/$PROJECT_ID/<app-name>:latest',
+   'gcr.io/$_PROJECT_ID/$_APP_NAME:latest',
    '.'
   ]
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=<cluster-zone>'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=<cluster-name>'
+  - 'CLOUDSDK_COMPUTE_ZONE=$_CLUSTER_ZONE'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME'
 #step 4
 - name: 'gcr.io/cloud-builders/kubectl'
   args: [
    'set', 
    'image', 
    'deployment', 
-   '<app-name>', 
-   '<app-name>=gcr.io/$PROJECT_ID/<app-name>:$BRANCH_NAME'
+   '$_APP_NAME', 
+   '$_APP_NAME=gcr.io/$_PROJECT_ID/$_APP_NAME:$_BRANCH_NAME'
   ]
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=<cluster-zone>'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=<cluster-name>'
+  - 'CLOUDSDK_COMPUTE_ZONE=$_CLUSTER_ZONE'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME'
 # push images to Google Container Registry with tags
 images: [
-   'gcr.io/$PROJECT_ID/<app-name>:$BRANCH_NAME',
-   'gcr.io/$PROJECT_ID/<app-name>:latest'
+   'gcr.io/$_PROJECT_ID/$_APP_NAME:$_BRANCH_NAME',
+   'gcr.io/$_PROJECT_ID/$_APP_NAME:latest'
   ]
