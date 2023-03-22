@@ -40,3 +40,5 @@ images: [
    'gcr.io/$_PROJECT_ID/$_APP_NAME:latest'
   ]
 logsBucket: '$_BUCKET_LOGS'
+options:
+  logging: GCS_ONLY
