@@ -15,7 +15,7 @@ spec:
         run: automation_app
     spec:
       containers:
-      - image: gcr.io/$_PROJECT_ID/automation_app:latest
+      - image: gcr.io/docker-project-0502/automation_app:latest
         name: automation_app
         ports:
-        - containerPort: _CONTAINER_PORT
+        - containerPort: 80
