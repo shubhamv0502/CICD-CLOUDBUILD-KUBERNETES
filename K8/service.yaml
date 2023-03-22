@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: $_APP_NAME
+  name: automation_app
 spec:
   selector:
-     run: $_APP_NAME
+     run: automation_app
   ports:
   - protocol: TCP
     port: 80
-    targetPort: $_CONTAINER_PORT
+    targetPort: 80
   type: LoadBalancer
