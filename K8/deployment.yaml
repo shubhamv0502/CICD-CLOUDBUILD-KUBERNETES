@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    run: automation_app
-  name: automation_app
+    run: pyimg1
+  name: pyimg1
 spec:
   replicas: 2
   selector:
     matchLabels:
-      run: automation_app
+      run: pyimg1
   template:
     metadata:
       labels:
-        run: automation_app
+        run: pyimg1
     spec:
       containers:
-      - image: gcr.io/docker-project-0502/automation_app:latest
-        name: automation_app
+      - image: gcr.io/docker-project-0502/pyimg1:latest
+        name: pyimg1
         ports:
         - containerPort: 80
