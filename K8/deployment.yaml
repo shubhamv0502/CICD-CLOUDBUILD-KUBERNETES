@@ -5,7 +5,7 @@ metadata:
     run: pyimg1
   name: pyimg1
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       run: pyimg1
