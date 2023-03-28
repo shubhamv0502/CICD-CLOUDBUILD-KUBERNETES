@@ -27,8 +27,8 @@ spec:
             ephemeral-storage: 1Gi
             memory: 2Gi
           requests:
-            cpu: 500m
-            ephemeral-storage: 1Gi
-            memory: 2Gi
+            cpu: 250m
+            ephemeral-storage: 500Mi
+            memory: 1Gi
         ports:
         - containerPort: 80
