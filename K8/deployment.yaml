@@ -5,7 +5,7 @@ metadata:
     run: pyimg1
   name: pyimg1
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: pyimg1
@@ -17,9 +17,18 @@ spec:
       containers:
       - image: gcr.io/docker-project-0502/pyimg1:latest
         name: pyimg1
+#         resources:
+#           limits:
+#             memory: "256Mi"
+#             cpu: "500m"
         resources:
           limits:
-            memory: "256Mi"
-            cpu: "500m"  
+            cpu: 500m
+            ephemeral-storage: 1Gi
+            memory: 2Gi
+          requests:
+            cpu: 500m
+            ephemeral-storage: 1Gi
+            memory: 2Gi
         ports:
         - containerPort: 80
