@@ -23,7 +23,10 @@ spec:
             cpu: "500m"  
         ports:
         - containerPort: 80
-        livenessProbe:
+        readinessProbe:
           initialDelaySeconds: 5 # Time before starting to Probe status
           timeoutSeconds: 1 # Time to wait before timeout
-          failureThreshold: 3 # How many times it can fail before restarting
+          # HTTP probe
+          httpGet:
+            path: / # the path we use to probe
+            port: 8080
