@@ -23,3 +23,7 @@ spec:
             cpu: "500m"  
         ports:
         - containerPort: 80
+        livenessProbe:
+          initialDelaySeconds: 5 # Time before starting to Probe status
+          timeoutSeconds: 1 # Time to wait before timeout
+          failureThreshold: 3 # How many times it can fail before restarting
