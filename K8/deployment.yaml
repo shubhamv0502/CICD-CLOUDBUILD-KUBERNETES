@@ -1,51 +1,30 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   labels:
-#     run: pyimg1
-#   name: pyimg1
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       run: pyimg1
-#   template:
-#     metadata:
-#       labels:
-#         run: pyimg1
-#     spec:
-#       containers:
-#       - image: gcr.io/docker-project-0502/pyimg1:latest
-#         name: pyimg1
-#         resources:
-#           limits:
-#             cpu: 500m
-#             ephemeral-storage: 1Gi
-#             memory: 2Gi
-#           requests:
-#             cpu: 250m
-#             ephemeral-storage: 500Mi
-#             memory: 1Gi
-#         ports:
-#         - containerPort: 80
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pyimg1-deployment
   labels:
-    app: pyimg1
+    run: pyimg1
+  name: pyimg1
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: pyimg1
+      run: pyimg1
   template:
     metadata:
       labels:
-        app: pyimg1
+        run: pyimg1
     spec:
       containers:
-      - name: pyimg1
-        image: gcr.io/docker-project-0502/pyimg1:latest
+      - image: gcr.io/docker-project-0502/pyimg1:latest
+        name: pyimg1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 1Gi
+            memory: 2Gi
+          requests:
+            cpu: 250m
+            ephemeral-storage: 500Mi
+            memory: 1Gi
         ports:
         - containerPort: 80
