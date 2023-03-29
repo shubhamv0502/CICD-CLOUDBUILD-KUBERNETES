@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: pyimg1
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: pyimg1
@@ -18,10 +18,10 @@ spec:
         image: gcr.io/docker-project-0502/pyimg1:latest
         ports:
         - containerPort: 80
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+#         resources:
+#           requests:
+#             memory: "64Mi"
+#             cpu: "250m"
+#           limits:
+#             memory: "128Mi"
+#             cpu: "500m"
