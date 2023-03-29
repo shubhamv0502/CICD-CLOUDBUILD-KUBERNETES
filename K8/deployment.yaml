@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pyimg1
-        image: gcr.io/docker-project-0502/pyimg1:latest
+#         image: gcr.io/docker-project-0502/pyimg1:latest
         image: gcr.io/docker-project-0502/pyimg1@sha256:2a52df25b7bf6c996dc59974b24215e84e3caabbe6afc3254feae0ff69a9dadb
         resources:
           limits:
