@@ -16,14 +16,14 @@ spec:
       containers:
       - name: pyimg1
         image: gcr.io/docker-project-0502/pyimg1:latest
-#         resources:
-#           limits:
-#             cpu: 500m
-#             ephemeral-storage: 1Gi
-#             memory: 2Gi
-#           requests:
-#             cpu: 250m
-#             ephemeral-storage: 500Mi
-#             memory: 1Gi
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 1Gi
+            memory: 2Gi
+          requests:
+            cpu: 250m
+            ephemeral-storage: 500Mi
+            memory: 1Gi
         ports:
         - containerPort: 80
