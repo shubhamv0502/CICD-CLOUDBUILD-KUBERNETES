@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: pyimg1
+  name: pyimg1-service
 spec:
   selector:
      app: pyimg1
