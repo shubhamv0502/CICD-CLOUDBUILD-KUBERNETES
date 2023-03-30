@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   name: pyimg1
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      run: pyimg1
+      app: pyimg1
   template:
     metadata:
       labels:
-        run: pyimg1
+        app: pyimg1
     spec:
       containers:
       - name: pyimg1
