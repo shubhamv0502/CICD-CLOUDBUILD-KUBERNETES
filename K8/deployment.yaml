@@ -70,4 +70,3 @@ spec:
           preStop:
             exec:
               command: ["/bin/sh", "-c", "kill 1"]
-              
