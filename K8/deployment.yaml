@@ -1,68 +1,68 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: nodeapp
-# spec:
-#   selector:
-#     matchLabels:
-#       run: nodeapp
-#   replicas: 2
-#   template:
-#     metadata:
-#       labels:
-#         run: nodeapp
-#     spec:
-#       containers:
-#       - name: nodeapp
-#         ports:
-#         - containerPort: 8080
-#         command:
-#         - sh
-#         - -c
-#         - while true; do sleep 1; done
-#         image: gcr.io/docker-project-381316/nodeapp:latest
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pyimg1
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      app: pyimg1
+      run: pyimg1
+  replicas: 2
   template:
     metadata:
       labels:
-        app: pyimg1
+        run: pyimg1
     spec:
       containers:
       - name: pyimg1
-        image: gcr.io/docker-project-0502/pyimg1:latest
         ports:
         - containerPort: 8080
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 10
-          periodSeconds: 30
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          failureThreshold: 3
-        lifecycle:
-          preStop:
-            exec:
-              command: ["/bin/sh", "-c", "kill 1"]
+        command:
+        - sh
+        - -c
+        - while true; do sleep 1; done
+        image: gcr.io/docker-project-0502/pyimg1:latest
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: pyimg1
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: pyimg1
+#   template:
+#     metadata:
+#       labels:
+#         app: pyimg1
+#     spec:
+#       containers:
+#       - name: pyimg1
+#         image: gcr.io/docker-project-0502/pyimg1:latest
+#         ports:
+#         - containerPort: 8080
+#         resources:
+#           requests:
+#             memory: "64Mi"
+#             cpu: "250m"
+#           limits:
+#             memory: "128Mi"
+#             cpu: "500m"
+#         livenessProbe:
+#           httpGet:
+#             path: /health
+#             port: 80
+#           initialDelaySeconds: 10
+#           periodSeconds: 30
+#           failureThreshold: 3
+#         readinessProbe:
+#           httpGet:
+#             path: /
+#             port: 80
+#           initialDelaySeconds: 5
+#           periodSeconds: 10
+#           failureThreshold: 3
+#         lifecycle:
+#           preStop:
+#             exec:
+#               command: ["/bin/sh", "-c", "kill 1"]
