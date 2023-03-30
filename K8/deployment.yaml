@@ -15,8 +15,9 @@ spec:
         run: pyimg1
     spec:
       containers:
-      - image: gcr.io/docker-project-0502/pyimg1:latest
-        name: pyimg1
+      - name: pyimg1
+        image: gcr.io/docker-project-0502/pyimg1:latest
+        ports:
         - containerPort: 8080
 #         command:
 #        - sh
