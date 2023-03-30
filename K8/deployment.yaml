@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
       - name: pyimg1
+        image: gcr.io/docker-project-0502/pyimg1:latest
         ports:
         - containerPort: 8080
         command:
         - sh
         - -c
         - while true; do sleep 1; done
-        image: gcr.io/docker-project-0502/pyimg1:latest
 
 # apiVersion: apps/v1
 # kind: Deployment
