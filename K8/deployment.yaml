@@ -2,13 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pyimg1
-  labels:
-    run: pyimg1
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      run: pyimg1
-  replicas: 2
+      app: pyimg1
   template:
     metadata:
       labels:
